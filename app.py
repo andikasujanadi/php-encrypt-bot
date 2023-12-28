@@ -61,7 +61,7 @@ def get_files(arg):
                 output.append(file)
     return output
 
-def execute(files):
+def execute(files,comment):
     for file in tqdm(files):
         path = f'.\\encrypted\\{file[14:]}'
         os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -72,15 +72,16 @@ def execute(files):
         with open(file) as f: s = f.read()
         encript(s)
         f = open(path, "w")
-        f.write(pyperclip.paste())
+        f.write(f'//{comment}\n{pyperclip.paste()}')
         f.close()
 
 def main():
     print('initiating')
     init_driver()
     print('tools loaded')
-    execute(get_files('models'))
-    execute(get_files('controllers'))
+    comment = "waduh, masuk pak Eko"
+    execute(get_files('models'), comment)
+    execute(get_files('controllers'), comment)
     
 if __name__ == '__main__':
     main()
