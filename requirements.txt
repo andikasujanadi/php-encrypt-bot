@@ -1,0 +1,4 @@
+selenium
+pyautogui
+pyperclip
+tqdm
